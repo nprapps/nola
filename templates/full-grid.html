@@ -1,0 +1,14 @@
+<div class="full-grid-wrapper">
+    <div class="full-grid captioned">
+            <div class="enlarge">
+                <img src="assets/img/transparent_1500.png" data-src="assets/img/jpac/{{ row.photo }}" alt="{{ row.photo_caption }}" class="img-responsive">
+                <div class="option"><i class="fa fa-search-plus"></i></div>
+            </div><!--/enlarge-->
+            {% if row.photo_caption %}
+                <div class="caption-text">
+                    <h6>{{ row.photo_caption }}</h6>
+                </div>
+                <p class="caption-label"><i class="fa fa-plus-circle"></i> <b>Caption</b></p>
+            {% endif %}
+    </div><!--/full-grid-->
+</div><!--/full-grid-wrapper-->
