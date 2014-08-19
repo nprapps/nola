@@ -1,4 +1,16 @@
 {% extends '_base.html' %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block extra_head_js %}
+{% endblock extra_head_js %}
+
+{% block extra_head %}
+
+{% endblock extra_head %}
+
+{% block content %}
 <div class="titlecard-wrapper">
     <div id="top" style="top:0px;position:absolute;" class="waypoint" data-down-waypoint="0,38" data-up-waypoint="0,38"></div>
     <div id="title-text" class="animated fadeIn">
@@ -9,26 +21,25 @@
                         <li>
                             <a href="http://www.npr.org"><img src="assets/img/npr-logo.png" class="npr-logo" alt="NPR" /></a>
                         </li>
-                        <li>{{ COPY.attribution.byline_top }}</li>
+                        <li>{{ COPY.story_metadata.byline }}</li>
                     </ul>
-                    <h1>{{ PROJECT_NAME }}</h1>
-                    <h2>{{ COPY.attribution.subhed_top }}</h2>
+                    <h1>{{ COPY.story_metadata.title }}</h1>
+                    <h2>{{ COPY.story_metadata.subtitle }}</h2>
 
                     <div class="begin-bar">
                         <p><strong>Begin</strong></p>
                     </div>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </div><!-- /#title-text -->
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="titlecard-mask animated fadeOut"></div>
-    <div class="titlecard-first animated"></div>
     <div class="titlecard"></div>
 
     <div class="caption-text">
-        <h6>{{ COPY.attribution.titlecard_caption }}</h6>
+        <h6>{{ COPY.story_metadata.titlecard_caption }}</h6>
     </div>
-</div><!-- /titlecard-wrapper -->
+</div>
 
 <div class="controls">
     <ul class="section-nav nav">
@@ -40,10 +51,7 @@
                 <a href="#{{row[1]}}"><strong>{{ row[0] }}</strong><i class="fa fa-circle"></i></a>
             </li>
         {% endfor %}
-        <li class="listen-nav">
-            <a href="#audio-story"><strong>Listen to the full story</strong> <i class="fa fa-circle"></i></a>
-        </li>
-        <li class="share">
+        <li class="share" data-toggle="modal" data-backdrop="static" data-target="#share-modal">
             <strong>Share</strong> <i class="fa fa-share"></i>
         </li>
     </ul>
@@ -63,54 +71,6 @@
 
 <!-- content -->
 
-<div id="audio-story">
-    <div class="container">
-        <div class="story-wrapper">
-            <div class="story-image">
-                 <img src="{{ COPY.attribution.radio_img }}" alt="{{ COPY.attribution.radio_hed }}" class="promo-thumb">
-            </div>
-            <div class="story-text">
-                 <h6>{{ COPY.attribution.radio_intro }}</h6>
-                 <h3>{{ COPY.attribution.radio_hed }}</h3>
-                 <p>{{ COPY.attribution.radio_desc }}</p>
-            </div>
-        </div>
-        <div class="story-player-wrapper">
-            <div class="part-wrapper">
-                <div class="part">
-                    <h6>{{ COPY.attribution.radio_1_title }}</h6>
-                </div>
-            </div>
-            <div class="story-player">
-                <div id="audio_1">
-                    <div id="pop-audio_1" class="jp-jplayer"></div>
-                    <div id="jp_container_1" class="jp-audio">
-                        <div class="jp-type-single">
-                            <div class="jp-gui jp-interface">
-                                <div class="jp-controls">
-                                    <a href="javascript:;" class="jp-play nav-btn" tabindex="1" title="play"><i class="fa fa-play"></i></a>
-                                    <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;" title="pause"><i class="fa fa-pause"></i></a>
-                                </div>
-                                <div class="jp-progress-container">
-                                    <div class="jp-progress">
-                                        <div class="jp-seek-bar">
-                                            <div class="jp-play-bar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="jp-volume-bar-container">
-                                    <div class="jp-volume-bar">
-                                        <div class="jp-volume-bar-value"></div>
-                                    </div>
-                                </div>
-                                <div class="current-time">{{ COPY.attribution.radio_1_duration }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="download-audio" id="download-audio" href="assets/audio/part-1.mp3" target="_blank"><i class="fa fa-download"></i> Download</a>
-                </div>
-            </div>
-        </div>
-    </div><!--/container-->
-</div><!--/audio-story -->
-{% include '_share_modal.html' %}
+{% endblock content %}
+{% block extra_foot_js %}
+{% endblock %}
