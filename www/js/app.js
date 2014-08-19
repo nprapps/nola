@@ -356,7 +356,6 @@ $(document).ready(function() {
     $overlay = $('#fluidbox-overlay');
     $enlarge = $('.enlarge');
     $intro_advance = $("#intro-advance");
-    $graphic_stats_year = $('#graphic-stats-year');
     $side_by_sides = $('.side-by-side-wrapper');
 
     $button_toggle_caption.on('click', button_toggle_caption_click);
