@@ -1,0 +1,226 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'less' ]
+2 info using npm@2.0.0-alpha-5
+3 info using node@v0.10.30
+4 verbose node symlink /usr/local/bin/node
+5 warn package.json @ No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'less@~1.7.0', null ]
+8 verbose cache add spec="less@~1.7.0" args=["less@~1.7.0",null]
+9 verbose parsed spec { raw: 'less@~1.7.0',
+9 verbose parsed spec   scope: null,
+9 verbose parsed spec   name: 'less',
+9 verbose parsed spec   rawSpec: '~1.7.0',
+9 verbose parsed spec   spec: '>=1.7.0-0 <1.8.0-0',
+9 verbose parsed spec   type: 'range' }
+10 verbose addNamed [ 'less', '>=1.7.0-0 <1.8.0-0' ]
+11 verbose addNamed [ null, '>=1.7.0-0 <1.8.0-0' ]
+12 silly lockFile ede4bb82-less-1-7-0-0-1-8-0-0 less@>=1.7.0-0 <1.8.0-0
+13 verbose lock less@>=1.7.0-0 <1.8.0-0 /Users/tylerfisher/.npm/ede4bb82-less-1-7-0-0-1-8-0-0.lock
+14 silly addNameRange { name: 'less', range: '>=1.7.0-0 <1.8.0-0', hasData: false }
+15 verbose mapToRegistry name less
+16 verbose mapToRegistry uri https://registry.npmjs.org/less
+17 verbose request where is /less
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 1e2fa4d726eb71d7
+20 verbose request url raw /less
+21 verbose request url resolving [ 'https://registry.npmjs.org/', './less' ]
+22 verbose request url resolved https://registry.npmjs.org/less
+23 verbose request where is https://registry.npmjs.org/less
+24 verbose request no basic auth needed
+25 info trying registry request attempt 1 at 14:08:50
+26 verbose etag "D6IBEIZMB5EHJWAYWZ5DEDJOC"
+27 http GET https://registry.npmjs.org/less
+28 http 200 https://registry.npmjs.org/less
+29 silly registry.get cb [ 200,
+29 silly registry.get   { date: 'Tue, 19 Aug 2014 18:08:28 GMT',
+29 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+29 silly registry.get     etag: '"CR3OPLCFWEV2PRHTBNDKTQBLF"',
+29 silly registry.get     'content-type': 'application/json',
+29 silly registry.get     'cache-control': 'max-age=60',
+29 silly registry.get     'content-length': '63886',
+29 silly registry.get     'accept-ranges': 'bytes',
+29 silly registry.get     via: '1.1 varnish',
+29 silly registry.get     age: '574',
+29 silly registry.get     'x-served-by': 'cache-iad2120-IAD',
+29 silly registry.get     'x-cache': 'HIT',
+29 silly registry.get     'x-cache-hits': '1',
+29 silly registry.get     'x-timer': 'S1408471708.389768,VS0,VE0',
+29 silly registry.get     vary: 'Accept',
+29 silly registry.get     'keep-alive': 'timeout=10, max=50',
+29 silly registry.get     connection: 'Keep-Alive' } ]
+30 silly addNameRange number 2 { name: 'less', range: '>=1.7.0-0 <1.8.0-0', hasData: true }
+31 silly addNameRange versions [ 'less',
+31 silly addNameRange   [ '1.0.10',
+31 silly addNameRange     '1.0.11',
+31 silly addNameRange     '1.0.14',
+31 silly addNameRange     '1.0.18',
+31 silly addNameRange     '1.0.19',
+31 silly addNameRange     '1.0.21',
+31 silly addNameRange     '1.0.32',
+31 silly addNameRange     '1.0.36',
+31 silly addNameRange     '1.0.5',
+31 silly addNameRange     '1.0.40',
+31 silly addNameRange     '1.0.41',
+31 silly addNameRange     '1.0.44',
+31 silly addNameRange     '1.1.0',
+31 silly addNameRange     '1.1.1',
+31 silly addNameRange     '1.1.2',
+31 silly addNameRange     '1.1.4',
+31 silly addNameRange     '1.1.5',
+31 silly addNameRange     '1.1.6',
+31 silly addNameRange     '1.2.0',
+31 silly addNameRange     '1.2.1',
+31 silly addNameRange     '1.2.2',
+31 silly addNameRange     '1.3.0',
+31 silly addNameRange     '1.3.1',
+31 silly addNameRange     '1.3.2',
+31 silly addNameRange     '1.3.3',
+31 silly addNameRange     '1.4.0-b1',
+31 silly addNameRange     '1.4.0-b2',
+31 silly addNameRange     '1.4.0-b3',
+31 silly addNameRange     '1.4.0-b4',
+31 silly addNameRange     '1.4.0',
+31 silly addNameRange     '1.4.1',
+31 silly addNameRange     '1.4.2',
+31 silly addNameRange     '1.5.0-b1',
+31 silly addNameRange     '1.5.0-b2',
+31 silly addNameRange     '1.5.0-b3',
+31 silly addNameRange     '1.5.0-b4',
+31 silly addNameRange     '1.5.0',
+31 silly addNameRange     '1.5.1',
+31 silly addNameRange     '1.6.0',
+31 silly addNameRange     '1.6.1',
+31 silly addNameRange     '1.6.2',
+31 silly addNameRange     '1.6.3',
+31 silly addNameRange     '1.7.0',
+31 silly addNameRange     '1.7.1',
+31 silly addNameRange     '1.7.3',
+31 silly addNameRange     '1.7.4' ] ]
+32 verbose addNamed [ 'less', '1.7.4' ]
+33 verbose addNamed [ '1.7.4', '1.7.4' ]
+34 silly lockFile 9a844466-less-1-7-4 less@1.7.4
+35 verbose lock less@1.7.4 /Users/tylerfisher/.npm/9a844466-less-1-7-4.lock
+36 silly lockFile 9a844466-less-1-7-4 less@1.7.4
+37 silly lockFile 9a844466-less-1-7-4 less@1.7.4
+38 silly lockFile ede4bb82-less-1-7-0-0-1-8-0-0 less@>=1.7.0-0 <1.8.0-0
+39 silly lockFile ede4bb82-less-1-7-0-0-1-8-0-0 less@>=1.7.0-0 <1.8.0-0
+40 silly resolved [ { name: 'less',
+40 silly resolved     version: '1.7.4',
+40 silly resolved     description: 'Leaner CSS',
+40 silly resolved     homepage: 'http://lesscss.org',
+40 silly resolved     author: { name: 'Alexis Sellier', email: 'self@cloudhead.net' },
+40 silly resolved     contributors: [ [Object] ],
+40 silly resolved     bugs: { url: 'https://github.com/less/less.js/issues' },
+40 silly resolved     repository: { type: 'git', url: 'https://github.com/less/less.js.git' },
+40 silly resolved     licenses: [ [Object] ],
+40 silly resolved     bin: { lessc: './bin/lessc' },
+40 silly resolved     main: './lib/less/index',
+40 silly resolved     directories: { test: './test' },
+40 silly resolved     jam: { main: './dist/less-1.6.3.js' },
+40 silly resolved     engines: { node: '>=0.8.0' },
+40 silly resolved     scripts: { test: 'grunt test' },
+40 silly resolved     optionalDependencies:
+40 silly resolved      { 'graceful-fs': '~2.0.3',
+40 silly resolved        mime: '~1.2.11',
+40 silly resolved        request: '~2.34.0',
+40 silly resolved        mkdirp: '~0.3.5',
+40 silly resolved        'clean-css': '2.1.x',
+40 silly resolved        'source-map': '0.1.x' },
+40 silly resolved     devDependencies:
+40 silly resolved      { diff: '~1.0',
+40 silly resolved        grunt: '~0.4.2',
+40 silly resolved        'grunt-contrib-clean': '~0.5.0',
+40 silly resolved        'grunt-contrib-concat': '~0.4.0',
+40 silly resolved        'grunt-contrib-connect': '~0.7.0',
+40 silly resolved        'grunt-contrib-jasmine': '~0.5.2',
+40 silly resolved        'grunt-contrib-jshint': '~0.10.0',
+40 silly resolved        'grunt-contrib-uglify': '~0.4.0',
+40 silly resolved        'grunt-shell': '~0.7.0',
+40 silly resolved        'http-server': '~0.6.1',
+40 silly resolved        matchdep: '~0.3.0',
+40 silly resolved        'time-grunt': '~0.3.1' },
+40 silly resolved     keywords:
+40 silly resolved      [ 'compile less',
+40 silly resolved        'css nesting',
+40 silly resolved        'css variable',
+40 silly resolved        'css',
+40 silly resolved        'gradients css',
+40 silly resolved        'gradients css3',
+40 silly resolved        'less compiler',
+40 silly resolved        'less css',
+40 silly resolved        'less mixins',
+40 silly resolved        'less',
+40 silly resolved        'less.js',
+40 silly resolved        'lesscss',
+40 silly resolved        'mixins',
+40 silly resolved        'nested css',
+40 silly resolved        'parser',
+40 silly resolved        'preprocessor',
+40 silly resolved        'bootstrap css',
+40 silly resolved        'bootstrap less',
+40 silly resolved        'style',
+40 silly resolved        'styles',
+40 silly resolved        'stylesheet',
+40 silly resolved        'variables in css',
+40 silly resolved        'css less' ],
+40 silly resolved     dependencies:
+40 silly resolved      { 'graceful-fs': '~2.0.3',
+40 silly resolved        mime: '~1.2.11',
+40 silly resolved        request: '~2.34.0',
+40 silly resolved        mkdirp: '~0.3.5',
+40 silly resolved        'clean-css': '2.1.x',
+40 silly resolved        'source-map': '0.1.x' },
+40 silly resolved     _id: 'less@1.7.4',
+40 silly resolved     dist:
+40 silly resolved      { shasum: '1db03afd0d1b848d898d10d2690d79ee3834026d',
+40 silly resolved        tarball: 'http://registry.npmjs.org/less/-/less-1.7.4.tgz' },
+40 silly resolved     _from: 'less@>=1.7.0-0 <1.8.0-0',
+40 silly resolved     _npmVersion: '1.3.24',
+40 silly resolved     _npmUser: { name: 'agatronic', email: 'luke.a.page@gmail.com' },
+40 silly resolved     maintainers: [ [Object], [Object] ],
+40 silly resolved     _shasum: '1db03afd0d1b848d898d10d2690d79ee3834026d',
+40 silly resolved     _resolved: 'https://registry.npmjs.org/less/-/less-1.7.4.tgz',
+40 silly resolved     readme: 'ERROR: No README data found!' } ]
+41 info install less@1.7.4 into /Users/tylerfisher/src/nola
+42 info installOne less@1.7.4
+43 verbose node_modules/less unbuild
+44 info preuninstall less@1.7.4
+45 info uninstall less@1.7.4
+46 verbose true,/Users/tylerfisher/src/nola/node_modules,/Users/tylerfisher/src/nola/node_modules unbuild less@1.7.4
+47 verbose /Users/tylerfisher/src/nola/node_modules/.bin,[object Object] binRoot
+48 verbose gentlyRm verifying that /Users/tylerfisher/src/nola/node_modules/less is managed by npm
+49 silly cacheAndTest /Users/tylerfisher/src/nola/node_modules/less is inside /Users/tylerfisher/src/nola/node_modules
+50 silly gentlyRm /Users/tylerfisher/src/nola/node_modules/less is managed by npm
+51 silly gentlyRm /Users/tylerfisher/src/nola/node_modules/.bin/lessc is not under /Users/tylerfisher/src/nola/node_modules/less
+52 silly gentlyRm checking to see if /Users/tylerfisher/src/nola/node_modules/.bin/lessc is a link
+53 verbose gentlyRm /Users/tylerfisher/src/nola/node_modules/.bin/lessc is outside /Users/tylerfisher/src/nola/node_modules/less and not a link
+54 verbose node_modules/less unbuild
+55 info preuninstall less@1.7.4
+56 info uninstall less@1.7.4
+57 verbose true,/Users/tylerfisher/src/nola/node_modules,/Users/tylerfisher/src/nola/node_modules unbuild less@1.7.4
+58 verbose /Users/tylerfisher/src/nola/node_modules/.bin,[object Object] binRoot
+59 verbose gentlyRm verifying that /Users/tylerfisher/src/nola/node_modules/less is managed by npm
+60 silly isManaged /Users/tylerfisher/src/nola/node_modules/less is inside /Users/tylerfisher/src/nola/node_modules
+61 silly gentlyRm /Users/tylerfisher/src/nola/node_modules/less is managed by npm
+62 silly gentlyRm /Users/tylerfisher/src/nola/node_modules/.bin/lessc is not under /Users/tylerfisher/src/nola/node_modules/less
+63 silly gentlyRm checking to see if /Users/tylerfisher/src/nola/node_modules/.bin/lessc is a link
+64 verbose gentlyRm /Users/tylerfisher/src/nola/node_modules/.bin/lessc is outside /Users/tylerfisher/src/nola/node_modules/less and not a link
+65 error error rolling back Error: Refusing to delete: /Users/tylerfisher/src/nola/node_modules/.bin/lessc not in /Users/tylerfisher/src/nola/node_modules/less
+65 error error rolling back     at clobberFail (/usr/local/lib/node_modules/npm/lib/utils/gently-rm.js:162:12)
+65 error error rolling back     at /usr/local/lib/node_modules/npm/lib/utils/gently-rm.js:73:16
+65 error error rolling back     at Object.oncomplete (evalmachine.<anonymous>:107:15)
+65 error error rolling back  less@1.7.4 { [Error: Refusing to delete: /Users/tylerfisher/src/nola/node_modules/.bin/lessc not in /Users/tylerfisher/src/nola/node_modules/less]
+65 error error rolling back   code: 'EEXIST',
+65 error error rolling back   path: '/Users/tylerfisher/src/nola/node_modules/.bin/lessc' }
+66 error Refusing to delete: /Users/tylerfisher/src/nola/node_modules/.bin/lessc not in /Users/tylerfisher/src/nola/node_modules/less
+File exists: /Users/tylerfisher/src/nola/node_modules/.bin/lessc
+Move it away, and try again.
+67 error System Darwin 13.3.0
+68 error command "node" "/usr/local/bin/npm" "install" "less"
+69 error cwd /Users/tylerfisher/src/nola
+70 error node -v v0.10.30
+71 error npm -v 2.0.0-alpha-5
+72 error path /Users/tylerfisher/src/nola/node_modules/.bin/lessc
+73 error code EEXIST
+74 verbose exit [ 1, true ]
