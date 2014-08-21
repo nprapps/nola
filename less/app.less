@@ -349,7 +349,7 @@ a:hover, a:active {
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('@{img-root}/nola_ed_001.jpg') no-repeat 50% 50%;
+        background: url('@{img-root}/nola_01.jpg') no-repeat 50% 50%;
         .background-size(cover);
         .opacity(.7);
 
@@ -358,7 +358,7 @@ a:hover, a:active {
         }
 
         .touch & {
-            background: url('@{img-root}/nola_ed_001.jpg') no-repeat 50% 50%;
+            background: url('@{img-root}/nola_01.jpg') no-repeat 50% 50%;
             .background-size(cover);
         }
     }
@@ -403,12 +403,27 @@ a:hover, a:active {
     }
 }
 
+.headroom {
+    transition: transform 200ms linear;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
 //section navigation
 .controls {
     position: fixed;
-    top: 20px;
-    right: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
     z-index: 99;
+    background: rgba(255,255,255,0.95);
+    border-bottom:  1px solid rgba(0,0,0,0.1);
+
 
     .touch & {
         top: 0;
@@ -434,39 +449,69 @@ a:hover, a:active {
         }
 
         li {
-            font-size: 15px;
-            line-height: 1.5;
+            display: block;
+            float: left;
+            font-size: 16px;
+            line-height: 48px;
+            height: 50px;
+            vertical-align: top;
             position: relative;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(0,0,0,0.1);
 
             a {
-                color: #ccc;
+                color: #999;
                 outline: 0;
-                padding: 0;
+                padding: 0 @grid-gutter-width / 2;
                 background: transparent;
+                display: inline-block;
+                height: 49px;
+
+                .chapter {
+                    display: inline-block;
+                    background: #999;
+                    color: #fff;
+                    width: 20px;
+                    height: 20px;
+                    .border-radius(10px);
+                    font-size: 11px;
+                    font-weight: bold;
+                    text-align: center;
+                    line-height: 20px;
+                }
+
                 .transition(color 1s ease);
                 &:hover {
                     color: #707070;
                 }
+
+                i {
+                    display: none;
+                }
             }
             &.active{
-
                 a {
-                    color: #707070;
+                    color: #333;
+                    background: @gray-lighter;
+
+                    .chapter {
+                        background: #6d8ac4;
+                    }
                 }
             }
             strong {
-                position: absolute;
-                top: -2px;
-                left: -215px;
-                width: 210px;
+                // position: absolute;
+                // top: -2px;
+                // left: -215px;
+                // width: 210px;
                 overflow: hidden;
                 font-size: 11px;
                 padding: 5px;
-                color: #d0d0d0;
+                // color: #555;
                 text-align: right;
                 text-transform: uppercase;
-                .opacity(0);
-                .transition(opacity 1s ease);
+                // .opacity(0);
+                // .transition(opacity 1s ease);
             }
             &:hover {
                 strong {
@@ -476,6 +521,9 @@ a:hover, a:active {
         }
 
         .share {
+            float: right;
+            margin-right: @grid-gutter-width;
+            border-right: none;
             margin-top: 5px;
             color: #ccc;
             cursor: pointer;

@@ -41,21 +41,21 @@
     </div>
 </div>
 
-<div class="controls">
+<header class="controls headroom" data-headroom>
     <ul class="section-nav nav">
         <li class="top-nav active">
             <a href="#top"><strong>Home</strong> <i class="fa fa-home"></i></a>
         </li>
         {% for row in COPY.nav %}
             <li class="{{row[1]}}-nav">
-                <a href="#{{row[1]}}"><strong>{{ row[0] }}</strong><i class="fa fa-circle"></i></a>
+                <a href="#{{row[1]}}"><span class="chapter">{{ loop.index }}</span> <strong>{{ row[0] }}</strong></a>
             </li>
         {% endfor %}
         <li class="share" data-toggle="modal" data-backdrop="static" data-target="#share-modal">
             <strong>Share</strong> <i class="fa fa-share"></i>
         </li>
     </ul>
-</div>
+</header>
 <section id="content">
         {% for row in COPY.content %}
 
@@ -69,6 +69,10 @@
         {% endfor %}
     <!-- close the last section of the story -->
     </section>
+
+    <div class="share btn btn-default visible-xs" data-toggle="modal" data-backdrop="static" data-target="#share-modal">
+        <strong>Share</strong> <i class="fa fa-share"></i>
+    </div>
 </section>
 
 <!-- content -->

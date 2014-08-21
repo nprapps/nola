@@ -54,7 +54,7 @@ var sub_responsive_images = function() {
             if ($(img).attr('data-src')){
 
                 // Sub in the responsive image from that data-src attribute.
-                var responsive_image = $(img).attr('data-src').replace('_1500', '_750');
+                var responsive_image = $(img).attr('data-src').replace('.jpg', '_m.jpg');
                 $(img).attr('data-src', responsive_image);
             }
         });
