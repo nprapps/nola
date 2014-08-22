@@ -20,6 +20,7 @@ var h;
 var w_optimal;
 var h_optimal;
 var fade;
+var trackedMarks = [];
 
 var unveil_images = function() {
     /*
@@ -134,7 +135,8 @@ var button_toggle_caption_click = function() {
     /*
     * Click handler for the caption toggle.
     */
-    _gaq.push(['_trackEvent', 'Captions', 'Clicked caption button', APP_CONFIG.PROJECT_NAME, 1]);
+
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'captions', 'Clicked caption button']);
     $( this ).parent( ".captioned" ).toggleClass('cap-on');
 };
 
@@ -166,6 +168,8 @@ var on_nav_click = function(){
     else {
         $.smoothScroll({ speed: 800, scrollTarget: '#' + hash });
     }
+
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'navigation', 'clicked chapter nav link']);
 
     return false;
 };
@@ -345,6 +349,31 @@ var fade_lightbox_out = function() {
     $lightbox.remove();
 };
 
+/*
+ * Track scroll depth for completion events.
+ *
+ * After: https://github.com/robflaherty/jquery-scrolldepth
+ */
+var onScroll = _.throttle(function(e) {
+    var docHeight = $(document).height();
+    var winHeight = window.innerHeight ? window.innerHeight : $window.height();
+    var scrollDistance = $(document).scrollTop() + winHeight;
+
+    var marks = {
+        '25%' : parseInt(docHeight * 0.25),
+        '50%' : parseInt(docHeight * 0.50),
+        '75%' : parseInt(docHeight * 0.75),
+        '100%': docHeight - 5
+    };
+
+    $.each(marks, function(mark, px) {
+        if (trackedMarks.indexOf(mark) == -1 && scrollDistance >= px) {
+            _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'completion', mark]);
+            trackedMarks.push(mark);
+        }
+    });
+}, 500);
+
 $(document).ready(function() {
     $container = $('#content');
     $titlecard = $('.titlecard');
@@ -359,21 +388,15 @@ $(document).ready(function() {
     $side_by_sides = $('.side-by-side-wrapper');
 
     $button_toggle_caption.on('click', button_toggle_caption_click);
-
     $begin.on('click', on_begin_click);
-
     $nav.on('click', on_nav_click);
-
     $enlarge.on('click', on_lightbox_click);
-
     $w.on('resize', on_window_resize);
-
     $intro_advance.on('click', on_intro_advance_click);
+    $(document).on('scroll', onScroll);
 
     on_window_resize();
-
     sub_responsive_images();
-
     fix_image_grid_spacing();
 
     $waypoints.waypoint(function(direction){
