@@ -779,6 +779,14 @@ a:hover, a:active {
         text-transform: uppercase;
         color: #111;
         text-align: center;
+
+        @media @screen-tiny {
+            font-size: 24px;
+        }
+    }
+
+    .chapter:first-child .chapter-title {
+        margin-top: @line-height-computed * 2;
     }
 
     //image captions
