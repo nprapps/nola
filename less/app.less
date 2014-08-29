@@ -1286,6 +1286,66 @@ a:hover, a:active {
 
 }// end content
 
+.story-footer {
+    background: #333;
+    @media @screen-small-above {
+        background: #333;
+        .background-size(cover);
+    }
+
+    color: #ddd;
+    position: relative;
+    padding-bottom: 40px;
+    padding-top: 50px;
+    margin-top: 20px;
+
+    .story-wrapper {
+        .make-row();
+        margin: 20px 0 0 0;
+
+        .story-image {
+            .make-md-column(2);
+            .make-md-column-offset(2);
+        }
+
+        .story-text {
+            .make-md-column(6);
+
+            &.noimg {
+                .make-md-column(8);
+                .make-md-column-offset(2);
+            }
+        }
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.1;
+        text-transform: uppercase;
+
+        @media @screen-small-above {
+            font-size: 40px;
+        }
+    }
+
+    //project credits
+    .credits {
+        margin-top: 40px;
+        border-top: 1px solid #666;
+        padding-top: 10px;
+
+        h6 {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
 // Footer
 footer {
     padding: 0 15px 10px 15px;
