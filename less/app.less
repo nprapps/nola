@@ -650,6 +650,10 @@ a:hover, a:active {
         .full-grid {
             .make-md-column(12);
         }
+
+        @media @screen-small {
+            margin: 10px 0;
+        }
     }
 
     // inset photo
@@ -662,6 +666,14 @@ a:hover, a:active {
         .inset {
             .make-md-column(8);
             .make-md-column-offset(2);
+        }
+
+        @media @screen-small {
+            margin: 10px 0;
+
+            + .inset-wrapper {
+                margin-top: 0;
+            }
         }
     }
 
