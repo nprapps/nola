@@ -366,4 +366,9 @@ The Google Analytics events tracked in this application are:
 |nola|summary-copied||||
 |nola|featured-tweet-action|`action`||``tweet_url``|
 |nola|featured-facebook-action|`action`||``post_url``|
-
+|nola|completion|25%|||
+|nola|completion|50%|||
+|nola|completion|75%|||
+|nola|completion|100%|||
+|nola|captions|Clicked caption button|||
+|nola|navigation|clicked chapter nav link|||
