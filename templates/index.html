@@ -35,10 +35,6 @@
     </div>
     <div class="titlecard-mask animated fadeOut"></div>
     <div class="titlecard"></div>
-
-    <div class="caption-text">
-        <h6>{{ COPY.story_metadata.titlecard_caption }}</h6>
-    </div>
 </div>
 
 <header class="controls headroom" data-headroom>
@@ -54,6 +50,10 @@
     </ul>
 </header>
 <section id="content">
+    <div class="titlecard-caption caption-text">
+        <h6>{{ COPY.story_metadata.titlecard_caption }}</h6>
+    </div>
+
         {% for row in COPY.content %}
 
             {% if row.template == 'chapter' %}

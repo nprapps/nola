@@ -228,6 +228,7 @@ a:hover, a:active {
         .npr-logo {
             width: 70px;
             margin: 0 0 10px;
+
             @media @screen-small-above {
                 width: 100px;
             }
@@ -255,8 +256,6 @@ a:hover, a:active {
                 font-weight: bold;
                 margin-bottom: 30px;
             }
-
-
         }
 
         h2 {
@@ -272,6 +271,7 @@ a:hover, a:active {
                 line-height: 1.5;
                 max-width: 390px;
             }
+
             em {
                 display: block;
                 font-style: normal;
@@ -351,13 +351,13 @@ a:hover, a:active {
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('@{img-root}/nola_01.jpg') no-repeat 50% 50%;
+        background: url('@{img-root}/nola_01.jpg') no-repeat 0% 50%;
         .background-size(cover);
 
-        .touch & {
-            background: url('@{img-root}/nola_01.jpg') no-repeat 50% 50%;
-            .background-size(cover);
+        @media @screen-small {
+            left: -100px !important;
         }
+
     }
 
     ul {
@@ -396,6 +396,30 @@ a:hover, a:active {
                 color: #fff;
                 background-color: #111;
             }
+        }
+    }
+}
+
+.titlecard-caption {
+    margin-left: 10px;
+    padding-top: 10px;
+
+    @media @screen-small {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    h6 {
+        margin: 0;
+        font-size: 12px;
+        color: #999;
+    }
+
+    + .chapter {
+        margin-top: 0;
+
+        @media @screen-small-above {
+            margin-top: 60px;
         }
     }
 }
