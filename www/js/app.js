@@ -12,9 +12,11 @@ var $story_player_button;
 var $enlarge;
 var $intro_advance;
 var $side_by_sides;
+var $shareModal;
 var aspect_width = 16;
 var aspect_height = 9;
 var first_page_load = true;
+var firstShare = true;
 var w;
 var h;
 var w_optimal;
@@ -374,6 +376,26 @@ var onScroll = _.throttle(function(e) {
     });
 }, 500);
 
+/*
+ * Share modal opened.
+ */
+var onShareModalShown = function(e) {
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'open-share-discuss']);
+
+    if (firstShare) {
+        loadComments();
+
+        firstShare = false;
+    }
+}
+
+/*
+ * Share modal closed.
+ */
+var onShareModalHidden = function(e) {
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'close-share-discuss']);
+}
+
 $(document).ready(function() {
     $container = $('#content');
     $titlecard = $('.titlecard');
@@ -386,6 +408,7 @@ $(document).ready(function() {
     $enlarge = $('.enlarge');
     $intro_advance = $("#intro-advance");
     $side_by_sides = $('.side-by-side-wrapper');
+    $shareModal = $('#share-modal');
 
     $button_toggle_caption.on('click', button_toggle_caption_click);
     $begin.on('click', on_begin_click);
@@ -393,6 +416,8 @@ $(document).ready(function() {
     $enlarge.on('click', on_lightbox_click);
     $w.on('resize', on_window_resize);
     $intro_advance.on('click', on_intro_advance_click);
+    $shareModal.on('shown.bs.modal', onShareModalShown);
+    $shareModal.on('hidden.bs.modal', onShareModalHidden);
     $(document).on('scroll', onScroll);
 
     on_window_resize();
