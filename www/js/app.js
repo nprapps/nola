@@ -351,6 +351,12 @@ var fade_lightbox_out = function() {
     $lightbox.remove();
 };
 
+var onClippyCopy = function(e) {
+    alert('Copied to your clipboard!');
+
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'summary-copied']);
+}
+
 /*
  * Track scroll depth for completion events.
  *
@@ -423,6 +429,13 @@ $(document).ready(function() {
     on_window_resize();
     sub_responsive_images();
     fix_image_grid_spacing();
+
+
+    ZeroClipboard.config({ swfPath: 'js/lib/ZeroClipboard.swf' });
+    var clippy = new ZeroClipboard($(".clippy"));
+    clippy.on('ready', function(readyEvent) {
+        clippy.on('aftercopy', onClippyCopy);
+    });
 
     $waypoints.waypoint(function(direction){
         on_waypoint(this, direction);
