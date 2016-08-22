@@ -8,6 +8,7 @@ They will be exposed to users. Use environment variables instead.
 See get_secrets() below for a fast way to access them.
 """
 
+import logging
 import os
 
 """
@@ -32,9 +33,13 @@ ASSETS_SLUG = 'nola'
 """
 DEPLOYMENT
 """
-PRODUCTION_S3_BUCKETS = ['apps.npr.org', 'apps2.npr.org']
-STAGING_S3_BUCKETS = ['stage-apps.npr.org']
+PRODUCTION_S3_BUCKET = 'apps.npr.org'
+
+STAGING_S3_BUCKET = 'stage-apps.npr.org'
+
 ASSETS_S3_BUCKET = 'assets.apps.npr.org'
+
+DEFAULT_MAX_AGE = 20
 
 PRODUCTION_SERVERS = ['cron.nprapps.org']
 STAGING_SERVERS = ['50.112.92.131']
@@ -77,6 +82,11 @@ SERVER_BASE_URL = ''
 DEBUG = True
 
 """
+Logging
+"""
+LOG_FORMAT = '%(levelname)s:%(name)s:%(asctime)s: %(message)s'
+
+"""
 COPY EDITING
 """
 COPY_GOOGLE_DOC_URL = 'https://docs.google.com/a/tylerjfisher.com/spreadsheet/ccc?key=0AqjLQISCZzBkdGFRcnF1aWlyTjJQUnpPbFl6eDJmQmc'
@@ -85,7 +95,7 @@ COPY_PATH = 'data/copy.xlsx'
 """
 SHARING
 """
-SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
+SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKET, PROJECT_SLUG)
 
 """
 ADS
@@ -103,7 +113,7 @@ SERVICES
 """
 GOOGLE_ANALYTICS = {
     'ACCOUNT_ID': 'UA-5828686-4',
-    'DOMAIN': PRODUCTION_S3_BUCKETS[0],
+    'DOMAIN': PRODUCTION_S3_BUCKET,
     'TOPICS': '[1013,1049,1019,1003,1001]' # e.g. '[1014,3,1003,1002,1001]'
 }
 
@@ -137,7 +147,7 @@ def configure_targets(deployment_target):
     Configure deployment targets. Abstracted so this can be
     overriden for rendering before deployment.
     """
-    global S3_BUCKETS
+    global S3_BUCKET
     global S3_BASE_URL
     global SERVERS
     global SERVER_BASE_URL
@@ -145,30 +155,38 @@ def configure_targets(deployment_target):
     global DEPLOYMENT_TARGET
     global APP_LOG_PATH
     global DISQUS_SHORTNAME
+    global LOG_LEVEL
+    global ASSETS_MAX_AGE
 
 
     if deployment_target == 'production':
-        S3_BUCKETS = PRODUCTION_S3_BUCKETS
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKETS[0], PROJECT_SLUG)
+        S3_BUCKET = PRODUCTION_S3_BUCKET
+        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET, PROJECT_SLUG)
         SERVERS = PRODUCTION_SERVERS
         SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         DISQUS_SHORTNAME = 'npr-news'
+        LOG_LEVEL = logging.WARNING
         DEBUG = False
+        ASSETS_MAX_AGE = 86400
     elif deployment_target == 'staging':
-        S3_BUCKETS = STAGING_S3_BUCKETS
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKETS[0], PROJECT_SLUG)
+        S3_BUCKET = STAGING_S3_BUCKET
+        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET, PROJECT_SLUG)
         SERVERS = STAGING_SERVERS
         SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         DISQUS_SHORTNAME = 'nprviz-test'
+        LOG_LEVEL = logging.DEBUG
         DEBUG = True
+        ASSETS_MAX_AGE = 20
     else:
-        S3_BUCKETS = []
+        S3_BUCKET = ''
         S3_BASE_URL = 'http://127.0.0.1:8000'
         SERVERS = []
         SERVER_BASE_URL = 'http://127.0.0.1:8001/%s' % PROJECT_SLUG
         DISQUS_SHORTNAME = 'nprviz-test'
         DEBUG = True
         APP_LOG_PATH = '/tmp/%s.app.log' % PROJECT_SLUG
+        LOG_LEVEL = logging.DEBUG
+        ASSETS_MAX_AGE = 20
 
     DEPLOYMENT_TARGET = deployment_target
 

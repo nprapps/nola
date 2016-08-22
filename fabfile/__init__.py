@@ -9,6 +9,7 @@ import app_config
 # Other fabfiles
 import assets
 import data
+import flat
 import issues
 import render
 import text
@@ -103,27 +104,24 @@ def _deploy_to_s3(path='.gzip'):
     Deploy the gzipped stuff to S3.
     """
     # Clear files that should never be deployed
-    local('rm -rf %s/live-data' % path)
-    local('rm -rf %s/sitemap.xml' % path)
+    flat.deploy_folder(
+        app_config.S3_BUCKET,
+        'www',
+        app_config.PROJECT_SLUG,
+        headers={
+           'Cache-Control': 'max-age=%i' % app_config.DEFAULT_MAX_AGE
+        },
+        ignore=['www/assets/*', 'www/live-data/*']
+    )
 
-    exclude_flags = ''
-    include_flags = ''
-
-    with open('gzip_types.txt') as f:
-        for line in f:
-            exclude_flags += '--exclude "%s" ' % line.strip()
-            include_flags += '--include "%s" ' % line.strip()
-
-    exclude_flags += '--exclude "www/assets" '
-
-    sync = 'aws s3 sync %s/ %s --acl "public-read" ' + exclude_flags + ' --cache-control "max-age=5" --region "us-east-1"'
-    sync_gzip = 'aws s3 sync %s/ %s --acl "public-read" --content-encoding "gzip" --exclude "*" ' + include_flags + ' --cache-control "max-age=5" --region "us-east-1"'
-    sync_assets = 'aws s3 sync %s/ %s --acl "public-read" --cache-control "max-age=86400" --region "us-east-1"'
-
-    for bucket in app_config.S3_BUCKETS:
-        local(sync % (path, 's3://%s/%s/' % (bucket, app_config.PROJECT_SLUG)))
-        local(sync_gzip % (path, 's3://%s/%s/' % (bucket, app_config.PROJECT_SLUG)))
-        local(sync_assets % ('www/assets/', 's3://%s/%s/assets/' % (bucket, app_config.PROJECT_SLUG)))
+    flat.deploy_folder(
+        app_config.S3_BUCKET,
+        'www/assets',
+        '%s/assets' % app_config.PROJECT_SLUG,
+        headers={
+            'Cache-Control': 'max-age=%i' % app_config.ASSETS_MAX_AGE
+        }
+    )
 
 def _gzip(in_path='www', out_path='.gzip'):
     """
@@ -136,7 +134,7 @@ def update():
     """
     Update all application data not in repository (copy, assets, etc).
     """
-    text.update()
+    # text.update()
     assets.sync()
     data.update()
 
