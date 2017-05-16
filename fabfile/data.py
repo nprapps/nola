@@ -55,7 +55,7 @@ def update_featured_social():
         creation_date = datetime.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y')
         creation_date = '%s %i' % (creation_date.strftime('%b'), creation_date.day)
 
-        tweet_url = 'http://twitter.com/%s/status/%s' % (tweet['user']['screen_name'], tweet['id'])
+        tweet_url = 'https://twitter.com/%s/status/%s' % (tweet['user']['screen_name'], tweet['id'])
 
         photo = None
         html = tweet['text']
